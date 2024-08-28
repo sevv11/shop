@@ -13,7 +13,8 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public static List<Product> getAllProducts() {
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
     public Product createProduct(Product product) {
@@ -25,13 +26,19 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
 
     }
-    public static Product updateProduct(Product product) {
-        return productRepository.save(product);
+    public static void updateProduct(Product product) {
+        productRepository.save(product);
     }
 
     public static void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
+    public Product getProduct(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Product id ile bulunamadı: " + id));
+    }
+
+
 
 
 }

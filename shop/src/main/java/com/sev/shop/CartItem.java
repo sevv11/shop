@@ -12,7 +12,7 @@ public class CartItem extends BaseEntity {
     @ManyToOne
     private Cart cart;
 
-    public Long getQuantity() {
+    public static Long getQuantity() {
     }
 
     public void setProduct(Product product) {
